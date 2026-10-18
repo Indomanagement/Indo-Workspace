@@ -268,4 +268,4 @@ footer{background:var(--navy);color:#a9b7cd;padding:44px 0 30px}
 
 /* ---------- APP LOGOS (each app has its own) ---------- */
 .appcard__icon img{width:100%;height:100%;object-fit:contain;border-radius:inherit}
-.applogo{width:72px;height:72px;border-radius:18px;display:block;margin-bottom:18px;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+.applogo{width:84px;height:84px;display:block;margin-bottom:18px}

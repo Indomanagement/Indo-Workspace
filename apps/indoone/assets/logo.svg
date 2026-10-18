@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Indoone">
-  <rect width="128" height="128" rx="30" fill="#c2690f"/>
-  <path d="M40 36h48a14 14 0 0 1 14 14v26a14 14 0 0 1-14 14H64l-16 14V90H40a14 14 0 0 1-14-14V50a14 14 0 0 1 14-14z" fill="#0f2545"/>
-  <circle cx="52" cy="63" r="6" fill="#e8891f"/>
-  <circle cx="64" cy="63" r="6" fill="#e8891f"/>
-  <circle cx="76" cy="63" r="6" fill="#e8891f"/>
-</svg>
