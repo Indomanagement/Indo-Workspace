@@ -5,13 +5,13 @@ Main website for Indo Workspace, designed as a multi-product landing page.
 ## Repository structure
 
 - `index.html` — responsive home page and product directory.
-- `assets/images/indo-workspace-logo.png` — official supplied Indo Workspace logo (add this asset before deploying).
+- `assets/images/indo-workspace-logo.webp` — official supplied Indo Workspace logo (add this asset before deploying).
 - `assets/images/apps/` — product logos.
 - `apps/<app-name>/index.html` — individual product detail pages as products are added.
 
 ## Before deployment
 
-1. Add the original Indo Workspace logo image at `assets/images/indo-workspace-logo.png`.
+1. Add the original Indo Workspace logo image at `assets/images/indo-workspace-logo.webp`.
 2. Add each product logo under `assets/images/apps/` and create its details page when official product information is available.
 3. Connect verified download and web-app URLs only after they are supplied.
 4. Configure the custom domain and hosting provider.
