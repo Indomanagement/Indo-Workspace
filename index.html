@@ -1,220 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="Indo Workspace — Next-Gen Indic AI Platform & Conversational Intelligence.">
-  <title>Indo Workspace — Indic AI Platform</title>
-  <link rel="icon" type="image/webp" href="assets/images/indo-workspace-logo.webp">
-  <style>
-    :root{--blue:#164da2;--blue2:#2468c9;--ink:#14223b;--muted:#65738a;--line:#e6ebf2;--surface:#f7f9fc;--green:#168744;--saffron:#ed8b13}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    a:focus-visible{outline:3px solid #80aef0;outline-offset:4px;border-radius:8px}
-    .wrap{width:min(1120px,calc(100% - 40px));margin-inline:auto}
-    .topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(230,235,242,.9)}
-    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .brand{display:flex;align-items:center;gap:12px;min-width:0}
-    .brand img{width:54px;height:54px;object-fit:contain;flex-shrink:0}
-    .brand-name{font-size:16px;font-weight:750;letter-spacing:-.035em;color:var(--blue)}
-    .brand-caption{display:block;margin-top:3px;font-size:10px;color:var(--muted);letter-spacing:.13em;text-transform:uppercase}
-    .nav-links{display:flex;align-items:center;gap:25px;color:#4b5a70;font-size:13px;font-weight:600}
-    .nav-links a:hover{color:var(--blue)}
-    .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 17px;border:1px solid var(--blue);border-radius:11px;background:var(--blue);color:white;font-size:13px;font-weight:700;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
-    .button:hover{transform:translateY(-1px);background:var(--blue2);box-shadow:0 8px 22px #164da220}
-    .button.secondary{background:white;color:var(--blue);border-color:#cfd9e8}
-    .button.secondary:hover{background:#f6f9ff}
-    .hero{position:relative;overflow:hidden;padding:82px 0 72px;background:radial-gradient(ellipse at 50% 0%,#eaf2ff 0,rgba(255,255,255,0) 58%),linear-gradient(180deg,#fff,#fbfcff)}
-    .hero:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:linear-gradient(#dce6f4 1px,transparent 1px),linear-gradient(90deg,#dce6f4 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
-    .hero-inner{position:relative;text-align:center;max-width:900px;margin:auto}
-    .hero-logo{display:block;width:min(300px,76vw);height:auto;max-height:280px;object-fit:contain;margin:0 auto 25px}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid #d8e5f8;border-radius:999px;background:#ffffffcf;color:var(--blue);font-size:11px;font-weight:750;letter-spacing:.11em;text-transform:uppercase}
-    .eyebrow-mark{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #16874418}
-    h1{max-width:800px;margin:22px auto 0;font-size:clamp(36px,6vw,62px);line-height:1.08;letter-spacing:-.055em;color:#172849}
-    h1 span{color:var(--blue)}
-    .hero-copy{max-width:680px;margin:21px auto 0;color:var(--muted);font-size:16px;line-height:1.8}
-    .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}
-    .trust-row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 24px;margin-top:27px;color:#69788f;font-size:12px}
-    .trust-row span{display:inline-flex;align-items:center;gap:7px}
-    .trust-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
-    section{scroll-margin-top:95px}
-    .section{padding:76px 0}
-    .section.soft{background:var(--surface);border-block:1px solid #edf1f7}
-    .section-head{text-align:center;max-width:680px;margin:0 auto 36px}
-    .kicker{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
-    h2{margin:12px 0 0;font-size:clamp(28px,4vw,40px);letter-spacing:-.045em;line-height:1.15;color:#162744}
-    .section-head p,.about-copy{color:var(--muted);font-size:15px;line-height:1.8}
-    .section-head p{margin:14px auto 0}
-    .apps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .app-card{display:flex;flex-direction:column;min-height:230px;padding:23px;border:1px solid var(--line);border-radius:18px;background:white;box-shadow:0 4px 16px #16274405;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
-    .app-card:hover{transform:translateY(-3px);border-color:#c6d7f1;box-shadow:0 14px 34px #1627440d}
-    .app-icon{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border:1px solid #dbe7f6;border-radius:15px;background:#f2f7ff;color:var(--blue);font-weight:800;font-size:20px;overflow:hidden}
-    .app-icon img{width:100%;height:100%;object-fit:contain;padding:5px}
-    .app-card h3{margin:18px 0 7px;font-size:17px;letter-spacing:-.025em}
-    .app-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}
-    .app-link{display:inline-flex;align-items:center;gap:7px;margin-top:auto;padding-top:20px;color:var(--blue);font-size:13px;font-weight:750}
-    .app-link svg{width:15px;height:15px}
-    .future-card{border-style:dashed;background:#fbfcfe}
-    .future-card .app-icon{background:#f5f7fa;color:#8290a4;border-color:#e5eaf0}
-    .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .feature{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff}
-    .feature-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:12px;background:#eef4ff;color:var(--blue);font-size:20px}
-    .feature h3{margin:17px 0 8px;font-size:16px}
-    .feature p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}
-    .about-panel{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center;padding:34px;border:1px solid var(--line);border-radius:22px;background:white}
-    .about-copy{margin:18px 0 0}
-    .architecture{display:grid;gap:10px}
-    .architecture-row{display:flex;align-items:center;gap:13px;padding:15px;border:1px solid var(--line);border-radius:13px;background:#fbfcff}
-    .architecture-icon{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#eff5ff;color:var(--blue);flex-shrink:0}
-    .architecture-row strong{display:block;font-size:13px}
-    .architecture-row small{display:block;margin-top:4px;color:var(--muted);font-size:11px;line-height:1.5}
-    .contact-panel{padding:47px 24px;border:1px solid #dce7f7;border-radius:22px;background:radial-gradient(ellipse at 50% 0%,#e8f1ff,white 72%);text-align:center}
-    .contact-panel p{max-width:560px;margin:14px auto 24px;color:var(--muted);font-size:14px;line-height:1.8}
-    footer{padding:27px 0;border-top:1px solid var(--line);background:#fff}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
-    .footer-brand{display:flex;align-items:center;gap:10px}
-    .footer-brand img{width:40px;height:40px;object-fit:contain}
-    .footer-brand strong{display:block;color:var(--blue);font-size:13px}
-    .footer-brand small{display:block;margin-top:3px;color:var(--muted);font-size:11px}
-    .footer-right{text-align:right;color:var(--muted);font-size:11px;line-height:1.8}
-    .footer-right a{color:var(--blue)}
-    .note{margin-top:17px;color:#8a96a8;font-size:10px;line-height:1.6}
-    @media(max-width:760px){.nav{height:68px}.brand img{width:44px;height:44px}.brand-caption{display:none}.nav-links{gap:14px}.nav-links>a:not(.button){display:none}.hero{padding:55px 0 58px}.hero-logo{width:min(285px,75vw);max-height:250px}.hero-copy{font-size:14px}.section{padding:58px 0}.apps-grid,.feature-grid{grid-template-columns:1fr 1fr}.about-panel{grid-template-columns:1fr;padding:23px;gap:25px}}
-    @media(max-width:480px){.wrap{width:calc(100% - 28px)}.brand-name{font-size:14px}.nav-links{gap:0}.nav-links .button{padding:10px 12px;font-size:12px}.hero-logo{width:min(250px,72vw)}.hero{padding-top:44px}.hero-copy{font-size:13px;line-height:1.8}.hero-actions{flex-direction:column;align-items:stretch}.apps-grid,.feature-grid{grid-template-columns:1fr}.app-card{min-height:205px}.footer-inner{align-items:flex-start;flex-direction:column}.footer-right{text-align:left}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indo Workspace — an Indian product company | indobiz.in</title>
+<meta name="description" content="Indo Workspace is a registered MSME and pure-play Indian product company. We build our own apps for Indian users and businesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="topbar">
-    <nav class="wrap nav" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Indo Workspace home">
-        <img src="assets/images/indo-workspace-logo.webp" alt="Indo Workspace logo">
-        <span><span class="brand-name">Indo Workspace</span><span class="brand-caption">Indic AI Platform</span></span>
-      </a>
-      <div class="nav-links">
-        <a href="#apps">Our Apps</a>
-        <a href="#about">About</a>
-        <a class="button" href="mailto:Contact@indobiz.in">Contact <span aria-hidden="true">↗</span></a>
-      </div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" style="text-decoration:none">
+      <span class="brand__mark">IW</span>
+      <span class="brand__text">
+        <span class="brand__name">Indo Workspace</span>
+        <span class="brand__sub">indobiz.in</span>
+      </span>
+    </a>
+    <nav class="nav__links">
+      <a href="apps/">Apps</a>
+      <a href="#company">Company</a>
+      <a href="contact/">Contact</a>
     </nav>
-  </header>
+    <a class="btn btn--primary btn--sm" href="contact/">Get in touch</a>
+  </div>
+</header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="wrap hero-inner">
-        <img class="hero-logo" src="assets/images/indo-workspace-logo.webp" alt="Indo Workspace — original tricolour emblem and wordmark">
-        <div class="eyebrow"><span class="eyebrow-mark"></span> Next-Gen Indic AI Platform</div>
-        <h1>Technology for India's <span>many languages.</span></h1>
-        <p class="hero-copy">Building high-performance, low-latency regional language AI models, conversational interfaces, and developer APIs for India.</p>
-        <div class="hero-actions">
-          <a class="button" href="#apps">Explore Our Apps <span aria-hidden="true">→</span></a>
-          <a class="button secondary" href="mailto:Contact@indobiz.in?subject=Indo%20Workspace%20Enquiry">Contact Our Team</a>
-        </div>
-        <div class="trust-row">
-          <span><i class="trust-dot"></i> Built with India's language diversity in mind</span>
-          <span><i class="trust-dot"></i> MSME Registered Entity</span>
-        </div>
+<!-- HERO — Indo Workspace -->
+<section class="hero" id="top">
+  <div class="wrap hero__inner">
+    <div>
+      <span class="eyebrow reveal" style="--i:0">Indo Workspace</span>
+      <h1 class="reveal" style="--i:1">An Indian product<br>company, building<br>for <em>India</em>.</h1>
+      <p class="hero__lead reveal" style="--i:2">
+        Indo Workspace is a registered MSME and pure-play Indian company. We design, build and run
+        our own software products for Indian users and businesses.
+      </p>
+      <div class="hero__cta reveal" style="--i:3">
+        <a class="btn btn--gold" href="apps/">See our apps</a>
+        <a class="btn btn--ghost" href="contact/">Talk to us</a>
       </div>
-    </section>
-
-    <section class="section soft" id="apps">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">Explore the ecosystem</div>
-          <h2>Our Apps</h2>
-          <p>Explore products from Indo Workspace. Each product can have its own details page, downloads, web experience, and support links.</p>
-        </div>
-        <div class="apps-grid">
-          <!-- Add each product as a separate card and details page when its name, logo and links are ready. -->
-          <article class="app-card future-card">
-            <div class="app-icon" aria-hidden="true">+</div>
-            <h3>More apps coming</h3>
-            <p>Our product directory is ready to grow. New app cards will appear here as product information becomes available.</p>
-            <a class="app-link" href="mailto:Contact@indobiz.in?subject=Indo%20Workspace%20Apps">Ask about our products <span aria-hidden="true">→</span></a>
-          </article>
-        </div>
-        <p class="note">Indoone will be added here when its logo and product details are supplied. Eye Search is intentionally not listed while it is under development.</p>
-      </div>
-    </section>
-
-    <section class="section" id="platform">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">What we're building</div>
-          <h2>Indic AI, with a practical focus.</h2>
-          <p>Flexible technology foundations for users and developers building the next generation of language-aware experiences.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">◈</div>
-            <h3>Regional Language AI</h3>
-            <p>Focused on useful AI experiences for India's diverse languages and communication needs.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">↯</div>
-            <h3>Responsive AI Experiences</h3>
-            <p>Designed around efficient inference and flexible backends for a range of product workloads.</p>
-          </article>
-          <article class="feature">
-            <div class="feature-icon" aria-hidden="true">⌘</div>
-            <h3>Developer-Friendly APIs</h3>
-            <p>A scalable direction for integrations that can connect AI capabilities to apps and workflows.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section soft" id="about">
-      <div class="wrap about-panel">
-        <div>
-          <div class="kicker">About Indo Workspace</div>
-          <h2>One brand.<br>Multiple product experiences.</h2>
-          <p class="about-copy">Indo Workspace is building lightweight, scalable AI experiences for consumers and developers. The main website serves as the central home for our business and products, while each app can have a dedicated page with its own overview and verified access links.</p>
-          <p class="about-copy">Our main domain is <strong>indobiz.in</strong>. Product paths or subdomains can be configured as the ecosystem grows.</p>
-        </div>
-        <div class="architecture" aria-label="Example website architecture">
-          <div class="architecture-row">
-            <span class="architecture-icon" aria-hidden="true">⌂</span>
-            <span><strong>Main website</strong><small>indobiz.in — business and product directory</small></span>
-          </div>
-          <div class="architecture-row">
-            <span class="architecture-icon" aria-hidden="true">▦</span>
-            <span><strong>Individual app pages</strong><small>indobiz.in/apps/app-name — product details and available links</small></span>
-          </div>
-          <div class="architecture-row">
-            <span class="architecture-icon" aria-hidden="true">⌘</span>
-            <span><strong>Product links</strong><small>Download and web buttons connected when official URLs are supplied</small></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="wrap">
-        <div class="contact-panel">
-          <div class="kicker">Get in touch</div>
-          <h2>Let's build for India.</h2>
-          <p>For product enquiries, collaborations, or early access, contact the Indo Workspace team directly.</p>
-          <a class="button" href="mailto:Contact@indobiz.in?subject=Hello%20Indo%20Workspace">Contact@indobiz.in <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap footer-inner">
-      <a class="footer-brand" href="#home">
-        <img src="assets/images/indo-workspace-logo.webp" alt="">
-        <span><strong>Indo Workspace</strong><small>Next-Gen Indic AI Platform &amp; Conversational Intelligence</small></span>
-      </a>
-      <div class="footer-right">
-        <div><a href="mailto:Contact@indobiz.in">Contact@indobiz.in</a></div>
-        <div>© 2026 Indo Workspace. All rights reserved. MSME Registered Entity.</div>
+      <div class="hero__meta reveal" style="--i:4">
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>MSME registered</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Made in India</span>
+        <span class="pill"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>indobiz.in</span>
       </div>
     </div>
-  </footer>
+
+    <div class="snap">
+      <div class="snap__top">
+        <span class="snap__mark">IW</span>
+        <span>
+          <span class="snap__name">Indo Workspace</span><br>
+          <span class="snap__tag">Parent company</span>
+        </span>
+      </div>
+      <div class="snap__rows">
+        <div class="snap__row"><span class="k">Domain</span><span class="v gold">indobiz.in</span></div>
+        <div class="snap__row"><span class="k">Type</span><span class="v">MSME · Private</span></div>
+        <div class="snap__row"><span class="k">Base</span><span class="v">India</span></div>
+        <div class="snap__row"><span class="k">Apps live</span><span class="v">1</span></div>
+        <div class="snap__row"><span class="k">Upcoming</span><span class="v">In the works</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust">
+  <div class="wrap trust__inner">
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5"/></svg><span><b>Indo Workspace</b> — parent company</span></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span><b>MSME</b> registered enterprise</span></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg><span><b>indobiz.in</b> — our main domain</span></div>
+    <div class="trust__item"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg><span><b>Pure Indian</b> startup</span></div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section class="sec" id="apps">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Our apps</div>
+      <h2>Apps by Indo Workspace</h2>
+      <p>We build our own products. Our first app is live, and more are on the way.</p>
+    </div>
+
+    <div class="apps-grid">
+      <!-- Indoone -->
+      <div class="appcard appcard--live reveal" style="--i:0">
+        <span class="badge badge--live">Available</span>
+        <div class="appcard__head">
+          <span class="appcard__icon"><img src="apps/indoone/assets/logo.svg" alt="Indoone logo"></span>
+          <span>
+            <span class="appcard__name">Indoone</span><br>
+            <span class="appcard__cat">AI Assistant</span>
+          </span>
+        </div>
+        <p class="appcard__desc">
+          A conversational AI assistant — the everyday help you know from ChatGPT and Gemini —
+          built with Indian context at its core.
+        </p>
+        <div class="appcard__foot">
+          <a class="btn btn--primary btn--sm" href="#"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Download</a>
+          <a class="btn btn--ghost btn--sm" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>Open on Web</a>
+          <a class="btn btn--ghost btn--sm" href="apps/indoone/" target="_blank" rel="noopener">Details<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Upcoming 1 -->
+      <div class="appcard appcard--soon reveal" style="--i:1">
+        <span class="badge badge--soon">Coming soon</span>
+        <div class="appcard__head">
+          <span class="appcard__icon">+</span>
+          <span>
+            <span class="appcard__name">Next app</span><br>
+            <span class="appcard__cat">In the works</span>
+          </span>
+        </div>
+        <p class="appcard__desc">
+          We're building more. Details of our next product will appear here as it gets closer.
+        </p>
+        <div class="appcard__foot">
+          <span class="ccard__note" style="font-size:13px">Announcement coming soon</span>
+        </div>
+      </div>
+
+      <!-- Upcoming 2 -->
+      <div class="appcard appcard--soon reveal" style="--i:2">
+        <span class="badge badge--soon">Coming soon</span>
+        <div class="appcard__head">
+          <span class="appcard__icon">+</span>
+          <span>
+            <span class="appcard__name">Next app</span><br>
+            <span class="appcard__cat">In the works</span>
+          </span>
+        </div>
+        <p class="appcard__desc">
+          More products are planned. Follow us to hear first when each one is ready.
+        </p>
+        <div class="appcard__foot">
+          <span class="ccard__note" style="font-size:13px">Announcement coming soon</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:30px;text-align:center"><a class="btn btn--ghost" href="apps/">See all apps</a></div>
+  </div>
+</section>
+
+<!-- COMPANY -->
+<section class="sec sec--tight" id="company">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <div class="kicker">The company</div>
+      <h2>About Indo Workspace</h2>
+      <p>A product company built for the long run, with India at the centre of everything we make.</p>
+    </div>
+    <div class="apps-grid apps-grid--3">
+      <div class="appcard reveal" style="--i:0">
+        <div class="appcard__head">
+          <span class="appcard__icon" style="font-size:17px">01</span>
+          <span><span class="appcard__name" style="font-size:17px">Indian first</span></span>
+        </div>
+        <p class="appcard__desc" style="margin-bottom:0">We build for the people and businesses around us before anyone else.</p>
+      </div>
+      <div class="appcard reveal" style="--i:1">
+        <div class="appcard__head">
+          <span class="appcard__icon" style="font-size:17px">02</span>
+          <span><span class="appcard__name" style="font-size:17px">Clear structure</span></span>
+        </div>
+        <p class="appcard__desc" style="margin-bottom:0">One company owns the platform — every app we ship belongs to Indo Workspace.</p>
+      </div>
+      <div class="appcard reveal" style="--i:2">
+        <div class="appcard__head">
+          <span class="appcard__icon" style="font-size:17px">03</span>
+          <span><span class="appcard__name" style="font-size:17px">Professional</span></span>
+        </div>
+        <p class="appcard__desc" style="margin-bottom:0">From the products to how we communicate, held to a clean, professional standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head sec-head--center">
+      <div class="kicker">Get in touch</div>
+      <h2>Want to reach us?</h2>
+      <p>Questions, partnerships, or working with us &mdash; everything lives on our contact page.</p>
+      <div style="margin-top:28px"><a class="btn btn--gold" href="contact/">Go to the contact page</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <span class="brand__mark">IW</span>
+        <span class="brand__text">
+          <span class="brand__name">Indo Workspace</span>
+          <span class="brand__sub">An Indian product company</span>
+        </span>
+      </div>
+      <div class="foot__links">
+        <a href="apps/">Apps</a>
+        <a href="#company">Company</a>
+        <a href="contact/">Contact</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 Indo Workspace. All rights reserved.</span>
+      <span class="mono">indobiz.in · MSME registered · Made in India</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

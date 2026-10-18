@@ -22,9 +22,8 @@ jobs:
 
       - name: Prepare static website
         run: |
-          mkdir -p _site/assets/images
-          cp index.html _site/index.html
-          cp -R assets/images/. _site/assets/images/
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' ./ _site/
           touch _site/.nojekyll
 
       - name: Upload Pages artifact
