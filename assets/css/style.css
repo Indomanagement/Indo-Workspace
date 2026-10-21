@@ -250,7 +250,7 @@ footer{background:var(--navy);color:#a9b7cd;padding:44px 0 30px}
   .grid--2,.grid--4,.specs,.contact__grid,.contact__grid--2{grid-template-columns:1fr}
   .sec{padding:52px 0}
   .hero{padding:52px 0 40px}
-  .trust__inner{justify-content:flex-start;gap:14px 26px}
+  .trust .trust__inner{justify-content:flex-start;gap:16px 26px;padding:28px 18px}
   .nav__inner{padding:12px 18px;flex-direction:column;align-items:stretch;gap:10px}
   .nav__inner .btn{width:100%;justify-content:center}
   .wrap{padding:0 18px}
